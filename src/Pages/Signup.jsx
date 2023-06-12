@@ -42,7 +42,7 @@ function Signup() {
   }
 
   const postSignUp = () => {
-    fetch(`https://sport-server-4lua.onrender.com/createuser`, {
+    fetch(`https://sport-server-i5oo.onrender.com/createuser`, {
       method: 'POST',
       headers: {
         'Access-Control-Allow-Origin': 'true',

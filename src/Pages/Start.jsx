@@ -13,7 +13,7 @@ function Start() {
     }
     else {
       try {
-        fetch(`https://sport-server-4lua.onrender.com/getuser`, { method: 'POST', mode: 'cors', headers: { "jwt-token": token } })
+        fetch(`https://sport-server-i5oo.onrender.com/getuser`, { method: 'POST', mode: 'cors', headers: { "jwt-token": token } })
           .then(res => res.json())
           .then(data => {
             if (data._id !== undefined) {

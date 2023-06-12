@@ -12,7 +12,7 @@ function Login() {
     const [data, setData] = useState(layout);
 
     const login = () => {
-        fetch(`https://sport-server-4lua.onrender.com/login`, {
+        fetch(`https://sport-server-i5oo.onrender.com/login`, {
             method: 'POST',
             mode: 'cors',
             headers: {
