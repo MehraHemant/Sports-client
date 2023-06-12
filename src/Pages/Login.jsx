@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 function Login() {
     const navigate = useNavigate()
-env.config();
+dotenv.config();
     const layout = {
         email: '',
         password: ''
