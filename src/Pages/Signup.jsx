@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
-import dotenv from 'dotenv';
 
 
 function Signup() {
-  dotenv.config();
   const [outline, setOutline] = useState('')
   const navigate = useNavigate();
 
@@ -44,7 +42,7 @@ function Signup() {
   }
 
   const postSignUp = () => {
-    fetch(`${process.env.url}/createuser`, {
+    fetch(`https://sport-server-4lua.onrender.com/createuser`, {
       method: 'POST',
       headers: {
         'Access-Control-Allow-Origin': 'true',

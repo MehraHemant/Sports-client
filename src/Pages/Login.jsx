@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
-import dotenv from 'dotenv';
 
 function Login() {
     const navigate = useNavigate()
-dotenv.config();
     const layout = {
         email: '',
         password: ''
@@ -14,7 +12,7 @@ dotenv.config();
     const [data, setData] = useState(layout);
 
     const login = () => {
-        fetch(`${process.env.url}/login`, {
+        fetch(`https://sport-server-4lua.onrender.com/login`, {
             method: 'POST',
             mode: 'cors',
             headers: {

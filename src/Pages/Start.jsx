@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
-import dotenv from 'dotenv';
 
 
 function Start() {
-  dotenv.config();
 
   const navigate = useNavigate();
   const checkCookie = async () => {
@@ -15,7 +13,7 @@ function Start() {
     }
     else {
       try {
-        fetch(`${process.env.url}/getuser`, { method: 'POST', mode: 'cors', headers: { "jwt-token": token } })
+        fetch(`https://sport-server-4lua.onrender.com/getuser`, { method: 'POST', mode: 'cors', headers: { "jwt-token": token } })
           .then(res => res.json())
           .then(data => {
             if (data._id !== undefined) {
