@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
-import env from 'dotenv';
+import dotenv from 'dotenv';
 
 
 function Start() {
-  env.config();
+  dotenv.config();
 
   const navigate = useNavigate();
   const checkCookie = async () => {

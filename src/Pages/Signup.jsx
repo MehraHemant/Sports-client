@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
-import env from 'dotenv';
+import dotenv from 'dotenv';
 
 
 function Signup() {
-  env.config();
+  dotenv.config();
   const [outline, setOutline] = useState('')
   const navigate = useNavigate();
 
