@@ -60,12 +60,21 @@ function Signup() {
             icon: 'error',
             title: 'Email Already exists',
           })
+          setData(layout);
+        }
+        else if (data == 500) {
+          Toast.fire({
+            icon:'error',
+            title: 'Internal Server Error',
+          })
+          navigate('/login')
         } else {
           Toast.fire({
             icon: 'success',
             title: 'Signed up Successful'
           })
           setData(layout);
+          navigate('/home');
         }
       })
 

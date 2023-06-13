@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2'
 
 function Login() {
     const navigate = useNavigate()
@@ -8,6 +9,18 @@ function Login() {
         email: '',
         password: ''
     }
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
 
     const [data, setData] = useState(layout);
 
@@ -18,7 +31,7 @@ function Login() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email: data.email.toLowerCase(), password: data.password})
+            body: JSON.stringify({ email: data.email.toLowerCase(), password: data.password })
         })
             .then(res => {
                 return {
@@ -27,19 +40,24 @@ function Login() {
                 }
             })
             .then((data) => {
-                if (data.status === 200) {
+                if (data.status === 200 || data.status === 401) {
                     return data.token;
                 }
                 else {
-                    navigate('signup')
+                    navigate('/signup')
                 }
             })
-            .then((token) => {
-                // window.location.href = '/home';
-                navigate('/home')
-                Cookies.set('token', token, { expires: 7 });
-            });
-
+            .then(data => {if(data.token !== undefined && data.token !== ""){
+                Cookies.set('token', data.token, { expires: 1 });
+                navigate('/Home');
+            }
+            else{
+                Toast.fire({
+                    icon: 'error',
+                    title: data.message,
+                  })
+            }
+        })
     }
 
     const handleChange = (e) => {

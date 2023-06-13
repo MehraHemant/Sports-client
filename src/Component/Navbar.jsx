@@ -51,7 +51,7 @@ function Navbar() {
         (theme === 'light')?setWidth('left-11'):setWidth('left-0');
     }
     return (
-        <div className= {(sticky)?'sticky top-0 left-0 dark:bg-gray-800 bg-gray-300':'sticky top-0 left-0 bg-transparent dark:bg-gray-900'}>
+        <div className= {(sticky)?'sticky top-0 left-0 dark:bg-gray-800 bg-gray-300 z-50':'z-50 sticky top-0 left-0 bg-transparent dark:bg-gray-900'}>
             <nav className={`flex w-full justify-between px-3 items-center h-14 border-b-2 shadow-md`}>
                 <div className='bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-yellow-400 font-bold text-lg sm:text-xl'><Link to="/home">{navdata.logo}</Link></div>
                 <div className='flex sm:space-x-7 space-x-4'>
