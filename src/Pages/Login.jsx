@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2'
-
 function Login() {
     const navigate = useNavigate()
     const layout = {
-        email: '',
-        password: ''
+        email: 'Demo@user.com',
+        password: 'Demouser'
     }
 
     const Toast = Swal.mixin({
@@ -67,8 +66,6 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         login();
-        // getToken();
-        // setData(layout);
     }
     return (
         <section className="">

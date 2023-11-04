@@ -7,6 +7,8 @@ import { Auth } from '../Store/modeReducer';
 function Start() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
+
+  
   const checkCookie = async () => {
     const token = Cookies.get('token');
     if (token !== undefined && token !== '') {
@@ -22,9 +24,7 @@ function Start() {
             }
           })
       }
-      catch (err) {
-        console.error(err);
-      }
+      catch (err) {}
     }
   }
 

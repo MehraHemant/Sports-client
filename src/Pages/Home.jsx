@@ -3,11 +3,12 @@ import Card from '../Component/Card'
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Component/Navbar'
 import Cookies from 'js-cookie';
-
+import { useSelector } from 'react-redux';
 
 function Home() {
     const navigate = useNavigate();
-
+    const auth = useSelector(state => state.mode.auth);
+    
     const [data, setData] = useState([])
     const [tags, setTags] = useState([])
     const [length, setLength] = useState(true)
@@ -16,11 +17,15 @@ function Home() {
         const confirm = window.confirm('Do you want to logout ?')
         if (confirm) { Cookies.remove('token'); navigate('/') }
     }
+
     useEffect(() => {
-        fetch('https://sport-server-i5oo.onrender.com/sports', { mode: 'cors', headers: { 'Access-Control-Allow-Origin': 'true', 'Content-Type': 'application/json' } })
+        try{
+            fetch('https://sport-server-i5oo.onrender.com/sports', { mode: 'cors', headers: { 'Access-Control-Allow-Origin': 'true', 'Content-Type': 'application/json' } })
             .then((response) => response.json())
             .then(data => { setTags(data); setData(data); });
+        }catch(e){}
     }, [])
+
 
     const handleKeyup = (event) => {
         event.preventDefault();
@@ -42,6 +47,7 @@ function Home() {
     }
 
     return (
+        auth ?
         <div className='min-h-screen dark:bg-gray-900'>
             <Navbar />
             <div className='flex justify-center mt-8'>
@@ -62,7 +68,7 @@ function Home() {
             <button className=' bg-gray-800 text-white hover:bg-gray-200 hover:text-gray-800 focus:shadow-none transition-all duration-200 shadow-md shadow-gray-400 hover:dark:text-gray-300 hover:dark:bg-gray-700 dark:text-black dark:bg-gray-200 px-4 py-2 rounded-lg fixed bottom-8 right-8 ' onClick={handleClick}>Logout</button>
 
 
-        </div>
+        </div> : navigate('/')
     )
 }
 
